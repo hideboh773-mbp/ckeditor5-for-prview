@@ -28,6 +28,17 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import ImageResizeEditing from '@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting';
+import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
+
+// import sideIcon from '@ckeditor/ckeditor5-core/theme/icons/object-full-width.svg'
+// import leftIcon from '@ckeditor/ckeditor5-core/theme/icons/object-left.svg';
+// import rightIcon from '@ckeditor/ckeditor5-core/theme/icons/object-left.svg';
+// import inlineIcon from '@ckeditor/ckeditor5-core/theme/icons/object-size-full.svg';
+// import centerIcon from '@ckeditor/ckeditor5-core/theme/icons/object-center.svg';
+
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -52,7 +63,10 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Alignment,
+	ImageResizeEditing,
+	ImageResizeHandles,
 ];
 
 // Editor configuration.
@@ -75,16 +89,21 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'alignment',
 		]
 	},
 	image: {
 		toolbar: [
+			'imageStyle:alignLeft',
+			'imageStyle:alignCenter',
+			'imageStyle:alignRight',
 			'imageStyle:full',
 			'imageStyle:side',
 			'|',
-			'imageTextAlternative'
-		]
+			'imageTextAlternative',
+		],
+		styles: ['side', 'full', 'alignLeft', 'alignCenter', 'alignRight'],
 	},
 	table: {
 		contentToolbar: [
